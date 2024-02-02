@@ -1,19 +1,14 @@
-set(TEST_TARGET_NAME _test)
-add_executable(${TEST_TARGET_NAME}
+add_executable(_test
         main.cxx
         )
-
-target_link_libraries(${TEST_TARGET_NAME}
-        ${TARGET_NAME}
-        CONAN_PKG::catch2
-        CONAN_PKG::durak
+target_link_libraries(_test
+        myproject_options
+        myproject_warnings
+        login_matchmaking_game_shared_type
         )
-target_include_directories(${TEST_TARGET_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_SOURCE_DIR})
-
-add_test(NAME ${TEST_TARGET_NAME}
-        COMMAND ${TEST_TARGET_NAME} -r junit)
+target_include_directories(_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_SOURCE_DIR})
 
 
-target_compile_definitions(${TEST_TARGET_NAME} PRIVATE
+target_compile_definitions(_test PRIVATE
         PATH_TO_USER_DEFINED_GAME_OPTION="test/userDefinedGameOption.hxx"
         )

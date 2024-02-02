@@ -1,57 +1,20 @@
-cmake_minimum_required(VERSION 3.17)
-project(project VERSION 1.0.0
-        DESCRIPTION project
-        LANGUAGES CXX
-        )
-
-########## enable cache system
-include(cmake/Cache.cmake)
-
-########## link against the libs to apply the configurations to the target
-# compiler warnings
-set(PROJECT_WARNINGS project_warning)
-add_library(${PROJECT_WARNINGS} INTERFACE)
-include(cmake/CompilerWarnings.cmake)
-set_project_warnings(${PROJECT_WARNINGS})
-# compiler options
-set(PROJECT_OPTIONS project_options)
-
-
-add_library(${PROJECT_OPTIONS} INTERFACE)
-
-target_compile_features(${PROJECT_OPTIONS} INTERFACE cxx_std_17)
-# target_precompile_headers(${PROJECT_OPTIONS} INTERFACE
-# )
-
-
-# include(cmake/Sanitizers.cmake)
-# enable_sanitizers(${PROJECT_OPTIONS})
-
-# allow for static analysis options
-#include(cmake/StaticAnalyzers.cmake)
-
-######## conan setup
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup(TARGETS)
-
-
-set(TARGET_NAME login_matchmaking_game_shared_type)
-add_library(${TARGET_NAME} INTERFACE)
-
-######## add sub dir
+cmake_minimum_required(VERSION 3.15.7)
+if (NOT DEFINED CMAKE_CXX_STANDARD) # Only set the cxx_standard if it is not set by someone else
+    set(CMAKE_CXX_STANDARD 20)
+endif ()
+project(
+        login_matchmaking_game_shared_type
+        VERSION 0.0.1
+        LANGUAGES CXX C)
+include(cmake/PreventInSourceBuilds.cmake)
+include(ProjectOptions.cmake)
+myproject_setup_options()
+myproject_local_options()
+target_compile_features(myproject_options INTERFACE cxx_std_${CMAKE_CXX_STANDARD})
+add_library(myproject::myproject_options ALIAS myproject_options)
+add_library(myproject::myproject_warnings ALIAS myproject_warnings)
 add_subdirectory(login_matchmaking_game_shared_type)
-
-
-####### link
-target_link_libraries(${TARGET_NAME} INTERFACE
-        ${PROJECT_WARNINGS}
-        ${PROJECT_OPTIONS}
-        CONAN_PKG::boost
-        )
-
-####### create executable
 OPTION(BUILD_TESTS "enable tests" OFF)
 IF (BUILD_TESTS)
-    enable_testing()
     add_subdirectory(test)
 ENDIF (BUILD_TESTS)
