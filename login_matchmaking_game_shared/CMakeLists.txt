@@ -5,28 +5,28 @@
 ## (See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 
-add_library(login_matchmaking_game_shared_type INTERFACE)
+add_library(login_matchmaking_game_shared INTERFACE)
 
 
-add_library(myproject::login_matchmaking_game_shared_type ALIAS login_matchmaking_game_shared_type)
+add_library(myproject::login_matchmaking_game_shared ALIAS login_matchmaking_game_shared)
 
 
 find_package(durak)
 find_package(Boost)
 
 
-target_link_libraries(login_matchmaking_game_shared_type INTERFACE
+target_link_libraries(login_matchmaking_game_shared INTERFACE
         durak::durak
         Boost::headers
         )
 
-target_include_directories(login_matchmaking_game_shared_type INTERFACE $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+target_include_directories(login_matchmaking_game_shared INTERFACE $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
         $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/include>)
 
-target_compile_features(login_matchmaking_game_shared_type INTERFACE cxx_std_20)
+target_compile_features(login_matchmaking_game_shared INTERFACE cxx_std_20)
 
 set_target_properties(
-        login_matchmaking_game_shared_type
+        login_matchmaking_game_shared
         PROPERTIES VERSION ${PROJECT_VERSION}
         CXX_VISIBILITY_PRESET hidden
         VISIBILITY_INLINES_HIDDEN YES)
@@ -34,6 +34,6 @@ set_target_properties(
 install(FILES
         matchmakingGameSerialization.hxx
         userMatchmakingSerialization.hxx
-        DESTINATION include/login_matchmaking_game_shared_type
+        DESTINATION include/login_matchmaking_game_shared
         )
-install(TARGETS login_matchmaking_game_shared_type DESTINATION lib)
+install(TARGETS login_matchmaking_game_shared DESTINATION lib)

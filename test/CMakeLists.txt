@@ -4,7 +4,7 @@ add_executable(_test
 target_link_libraries(_test
         myproject_options
         myproject_warnings
-        login_matchmaking_game_shared_type
+        login_matchmaking_game_shared
         )
 target_include_directories(_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_SOURCE_DIR})
 

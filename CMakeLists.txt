@@ -3,7 +3,7 @@ if (NOT DEFINED CMAKE_CXX_STANDARD) # Only set the cxx_standard if it is not set
     set(CMAKE_CXX_STANDARD 20)
 endif ()
 project(
-        login_matchmaking_game_shared_type
+        login_matchmaking_game_shared
         VERSION 0.0.1
         LANGUAGES CXX C)
 include(cmake/PreventInSourceBuilds.cmake)
@@ -13,7 +13,7 @@ myproject_local_options()
 target_compile_features(myproject_options INTERFACE cxx_std_${CMAKE_CXX_STANDARD})
 add_library(myproject::myproject_options ALIAS myproject_options)
 add_library(myproject::myproject_warnings ALIAS myproject_warnings)
-add_subdirectory(login_matchmaking_game_shared_type)
+add_subdirectory(login_matchmaking_game_shared)
 OPTION(BUILD_TESTS "enable tests" OFF)
 IF (BUILD_TESTS)
     add_subdirectory(test)
