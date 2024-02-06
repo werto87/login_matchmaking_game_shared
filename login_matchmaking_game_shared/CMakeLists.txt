@@ -25,11 +25,6 @@ target_include_directories(login_matchmaking_game_shared INTERFACE $<BUILD_INTER
 
 target_compile_features(login_matchmaking_game_shared INTERFACE cxx_std_20)
 
-set_target_properties(
-        login_matchmaking_game_shared
-        PROPERTIES VERSION ${PROJECT_VERSION}
-        CXX_VISIBILITY_PRESET hidden
-        VISIBILITY_INLINES_HIDDEN YES)
 
 install(FILES
         matchmakingGameSerialization.hxx
