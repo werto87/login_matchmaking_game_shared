@@ -1,7 +1,7 @@
 #ifndef F7525A03_A98E_4EEF_964B_E02274116B7D
 #define F7525A03_A98E_4EEF_964B_E02274116B7D
 
-#include PATH_TO_USER_DEFINED_GAME_OPTION
+#include <modern_durak_game_option/userDefinedGameOption.hxx>
 #include <boost/algorithm/string.hpp>
 #include <boost/fusion/adapted/struct/adapt_struct.hpp>
 #include <boost/fusion/adapted/struct/define_struct.hpp>
