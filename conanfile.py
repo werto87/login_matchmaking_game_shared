@@ -1,9 +1,15 @@
 from conan import ConanFile
+from conan.tools.cmake import CMake, cmake_layout
 
 
 class Project(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
-    generators = "CMakeToolchain", "CMakeDeps"
+    generators =  "CMakeDeps"
+
+    def generate(self):
+        tc = CMakeToolchain(self)
+        tc.user_presets_path = False #workaround because this leads to useless options in cmake-tools configure
+        tc.generate()
 
     def configure(self):
         self.options["catch2"].with_main = True
@@ -11,5 +17,5 @@ class Project(ConanFile):
 
     def requirements(self):
         self.requires("modern_durak_game_option/latest")
-        self.requires("durak/1.0.3")
-        self.requires("boost/1.84.0")
+        self.requires("durak/1.0.5")
+        self.requires("boost/1.85.0")
