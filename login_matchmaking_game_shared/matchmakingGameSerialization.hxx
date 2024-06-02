@@ -1,7 +1,6 @@
 #ifndef F7525A03_A98E_4EEF_964B_E02274116B7D
 #define F7525A03_A98E_4EEF_964B_E02274116B7D
 
-#include <modern_durak_game_option/userDefinedGameOption.hxx>
 #include <boost/algorithm/string.hpp>
 #include <boost/fusion/adapted/struct/adapt_struct.hpp>
 #include <boost/fusion/adapted/struct/define_struct.hpp>
@@ -32,6 +31,7 @@
 #include <cstddef>
 #include <iostream>
 #include <map>
+#include <modern_durak_game_option/userDefinedGameOption.hxx>
 #include <sstream>
 #include <string>
 #include <variant>
@@ -52,28 +52,5 @@ BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), UserLeftGameError, (std::string,
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), ConnectToGame, (std::string, accountName) (std::string, gameName))
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), ConnectToGameError, (std::string, error))
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), ConnectToGameSuccess, )
-
-// clang-format off
-namespace matchmaking_game{
-static boost::hana::tuple<
-  UnhandledMessageError,
-StartGameError,
-StartGameSuccess,
-LeaveGameServer,
-LeaveGameSuccess,
-LeaveGameError,
-GameOver,
-StartGame,
-GameOverSuccess,
-GameOverError,
-UserLeftGame,
-UserLeftGameSuccess,
-UserLeftGameError,
-ConnectToGame,
-ConnectToGameError,
-ConnectToGameSuccess
-  >  const matchmakingGame{};
-}
-// clang-format on
 
 #endif /* F7525A03_A98E_4EEF_964B_E02274116B7D */
