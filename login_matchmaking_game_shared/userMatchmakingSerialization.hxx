@@ -1,7 +1,7 @@
 #ifndef C02CDB99_AA83_45B0_83E7_8C8BC254A8A2
 #define C02CDB99_AA83_45B0_83E7_8C8BC254A8A2
 
-#include <modern_durak_game_option/userDefinedGameOption.hxx>
+#include "login_matchmaking_game_shared/gameOptionBase.hxx"
 #include <boost/algorithm/string.hpp>
 #include <boost/fusion/adapted/struct/adapt_struct.hpp>
 #include <boost/fusion/adapted/struct/define_struct.hpp>
@@ -65,7 +65,19 @@ BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), JoinGameLobbySuccess, )
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), JoinGameLobbyError, (std::string, name) (std::string, error))
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), GameOptionError, (std::string, error))
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), UserInGameLobby, (std::string, accountName))
-BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), UsersInGameLobby, (std::string, name) (std::vector<user_matchmaking::UserInGameLobby>, users) (size_t, maxUserSize) (shared_class::GameOption, durakGameOption))
+
+namespace user_matchmaking
+{
+
+struct UsersInGameLobby
+{
+  std::string name{};
+  std::vector<user_matchmaking::UserInGameLobby> users{};
+  size_t maxUserSize{};
+  std::unique_ptr<user_matchmaking_game::GameOptionBase> gameOption{};
+};
+}
+BOOST_FUSION_ADAPT_STRUCT (user_matchmaking::UsersInGameLobby, name, users, maxUserSize, gameOption)
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), SetMaxUserSizeInCreateGameLobby, (size_t, maxUserSize))
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), SetMaxUserSizeInCreateGameLobbyError, (std::string, error))
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), MaxUserSizeInCreateGameLobby, (size_t, maxUserSize))
@@ -103,7 +115,5 @@ BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), ConnectGameError, (std::string, 
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), UnhandledEventError, (std::string, unhandledEvent) (std::string, reason))
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), GetMatchmakingLogic, )
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), MatchmakingLogic, (std::string, logic))
-
-
 
 #endif /* C02CDB99_AA83_45B0_83E7_8C8BC254A8A2 */

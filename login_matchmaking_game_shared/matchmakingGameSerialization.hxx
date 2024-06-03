@@ -1,6 +1,7 @@
 #ifndef F7525A03_A98E_4EEF_964B_E02274116B7D
 #define F7525A03_A98E_4EEF_964B_E02274116B7D
 
+#include "login_matchmaking_game_shared/gameOptionBase.hxx"
 #include <boost/algorithm/string.hpp>
 #include <boost/fusion/adapted/struct/adapt_struct.hpp>
 #include <boost/fusion/adapted/struct/define_struct.hpp>
@@ -31,7 +32,6 @@
 #include <cstddef>
 #include <iostream>
 #include <map>
-#include <modern_durak_game_option/userDefinedGameOption.hxx>
 #include <sstream>
 #include <string>
 #include <variant>
@@ -41,7 +41,17 @@ BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), LeaveGameServer, (std::string, a
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), LeaveGameSuccess, )
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), LeaveGameError, )
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), GameOver, (std::string, gameName) (bool, ratedGame) (std::vector<std::string>, winners) (std::vector<std::string>, losers) (std::vector<std::string>, draws))
-BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), StartGame, (std::vector<std::string>, players) (shared_class::GameOption, gameOption) (bool, ratedGame))
+namespace matchmaking_game
+{
+struct StartGame
+{
+  std::vector<std::string> players{};
+  std::unique_ptr<user_matchmaking_game::GameOptionBase> gameOption{};
+  bool ratedGame{};
+};
+
+}
+BOOST_FUSION_ADAPT_STRUCT (matchmaking_game::StartGame, players, gameOption, ratedGame)
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), StartGameError, (std::string, error))
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), StartGameSuccess, (std::string, gameName))
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), GameOverSuccess, )
