@@ -41,8 +41,7 @@ struct GameOptionWrapper
 {
   std::unique_ptr<user_matchmaking_game::GameOptionBase> gameOption{};
 };
-
-std::expected<void, std::string> errorInGameOption (user_matchmaking_game::GameOptionBase const &gameOption);
+std::expected<void, std::string> errorInGameOption (user_matchmaking_game::GameOptionBase const &gameOptionBase);
 
 }
 
