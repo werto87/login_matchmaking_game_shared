@@ -26,6 +26,7 @@
 #include <boost/mpl/for_each.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/mpl/range_c.hpp>
+#include <expected>
 #include <memory>
 
 namespace user_matchmaking_game
@@ -41,8 +42,7 @@ struct GameOptionWrapper
   std::unique_ptr<user_matchmaking_game::GameOptionBase> gameOption{};
 };
 
-// TODO set compiler to c++23
-// TODO write a function which uses std::expected as a return type to check if the lobby is valid
+inline std::expected<void, std::string> errorInGameOption (user_matchmaking_game::GameOptionBase const &gameOption);
 
 }
 

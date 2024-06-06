@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.15.7)
-if (NOT DEFINED CMAKE_CXX_STANDARD) # Only set the cxx_standard if it is not set by someone else
-    set(CMAKE_CXX_STANDARD 23)
-endif ()
+set(CMAKE_CXX_STANDARD 23)
 project(
         login_matchmaking_game_shared
         VERSION 0.0.1
