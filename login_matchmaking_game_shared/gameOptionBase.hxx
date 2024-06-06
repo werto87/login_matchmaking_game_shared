@@ -26,6 +26,7 @@
 #include <boost/mpl/for_each.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/mpl/range_c.hpp>
+#include <memory>
 
 namespace user_matchmaking_game
 {
@@ -34,5 +35,12 @@ class GameOptionBase
 public:
   virtual ~GameOptionBase () noexcept = default;
 };
+
+struct GameOptionWrapper
+{
+  std::unique_ptr<user_matchmaking_game::GameOptionBase> gameOption{};
+};
 }
-BOOST_FUSION_ADAPT_STRUCT (user_matchmaking_game::GameOptionBase, );
+
+BOOST_FUSION_ADAPT_STRUCT (user_matchmaking_game::GameOptionBase, )
+BOOST_FUSION_ADAPT_STRUCT (user_matchmaking_game::GameOptionWrapper, gameOption)
