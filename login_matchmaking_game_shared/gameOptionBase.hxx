@@ -40,6 +40,10 @@ struct GameOptionWrapper
 {
   std::unique_ptr<user_matchmaking_game::GameOptionBase> gameOption{};
 };
+
+// TODO set compiler to c++23
+// TODO write a function which uses std::expected as a return type to check if the lobby is valid
+
 }
 
 BOOST_FUSION_ADAPT_STRUCT (user_matchmaking_game::GameOptionBase, )
