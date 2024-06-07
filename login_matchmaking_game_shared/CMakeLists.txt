@@ -27,7 +27,7 @@ target_compile_features(login_matchmaking_game_shared INTERFACE cxx_std_20)
 
 
 install(FILES
-        gameOptionBase.hxx
+        gameOptionAsString.hxx
         matchmakingGameSerialization.hxx
         userMatchmakingSerialization.hxx
         DESTINATION include/login_matchmaking_game_shared

@@ -1,7 +1,7 @@
 #ifndef C02CDB99_AA83_45B0_83E7_8C8BC254A8A2
 #define C02CDB99_AA83_45B0_83E7_8C8BC254A8A2
 
-#include "login_matchmaking_game_shared/gameOptionBase.hxx"
+#include "login_matchmaking_game_shared/gameOptionAsString.hxx"
 
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), JoinChannel, (std::string, channel))
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), JoinChannelSuccess, (std::string, channel))
