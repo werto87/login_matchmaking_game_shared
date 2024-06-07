@@ -31,5 +31,5 @@
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking_game), GameOptionAsString, (std::string, gameOptionAsString))
 namespace user_matchmaking_game
 {
-std::expected<void, std::string> errorInGameOption (GameOptionAsString const &gameOptionAsString);
+[[nodiscard]] std::expected<void, std::string> errorInGameOption (GameOptionAsString const &gameOptionAsString);
 }
