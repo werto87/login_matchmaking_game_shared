@@ -2,7 +2,6 @@
 #define F7525A03_A98E_4EEF_964B_E02274116B7D
 
 #include "login_matchmaking_game_shared/gameOptionAsString.hxx"
-
 #include <cstddef>
 #include <iostream>
 #include <map>
