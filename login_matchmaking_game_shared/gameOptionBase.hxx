@@ -26,22 +26,19 @@
 #include <boost/mpl/for_each.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/mpl/range_c.hpp>
-#include <boost/utility/identity_type.hpp>
 #include <expected>
 #include <memory>
+
 namespace user_matchmaking_game
 {
-struct DerivedTypeNotSet
-{
-};
 class GameOptionBase
 {
 public:
   virtual ~GameOptionBase () noexcept = default;
 };
-template <typename DerivedType = DerivedTypeNotSet> struct GameOptionWrapper
+
+struct GameOptionWrapper
 {
-  using derived_type = DerivedType;
   std::unique_ptr<user_matchmaking_game::GameOptionBase> gameOption{};
 };
 std::expected<void, std::string> errorInGameOption (user_matchmaking_game::GameOptionBase const &gameOptionBase);
@@ -49,4 +46,4 @@ std::expected<void, std::string> errorInGameOption (user_matchmaking_game::GameO
 }
 
 BOOST_FUSION_ADAPT_STRUCT (user_matchmaking_game::GameOptionBase, )
-BOOST_FUSION_ADAPT_TPL_STRUCT ((DerivedType), (user_matchmaking_game::GameOptionWrapper) (DerivedType), (std::unique_ptr<user_matchmaking_game::GameOptionBase>, gameOption))
+BOOST_FUSION_ADAPT_STRUCT (user_matchmaking_game::GameOptionWrapper, gameOption)
