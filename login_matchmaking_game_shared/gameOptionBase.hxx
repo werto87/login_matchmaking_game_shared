@@ -27,23 +27,9 @@
 #include <boost/mpl/if.hpp>
 #include <boost/mpl/range_c.hpp>
 #include <expected>
-#include <memory>
 
+BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking_game), GameOptionAsString, (std::string, gameOptionAsString))
 namespace user_matchmaking_game
 {
-class GameOptionBase
-{
-public:
-  virtual ~GameOptionBase () noexcept = default;
-};
-
-struct GameOptionWrapper
-{
-  std::unique_ptr<user_matchmaking_game::GameOptionBase> gameOption{};
-};
-std::expected<void, std::string> errorInGameOption (user_matchmaking_game::GameOptionBase const &gameOptionBase);
-
+std::expected<void, std::string> errorInGameOption (GameOptionAsString const &gameOptionAsString);
 }
-
-BOOST_FUSION_ADAPT_STRUCT (user_matchmaking_game::GameOptionBase, )
-BOOST_FUSION_ADAPT_STRUCT (user_matchmaking_game::GameOptionWrapper, gameOption)

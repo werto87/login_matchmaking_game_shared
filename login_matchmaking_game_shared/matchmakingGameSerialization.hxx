@@ -15,17 +15,8 @@ BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), LeaveGameServer, (std::string, a
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), LeaveGameSuccess, )
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), LeaveGameError, )
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), GameOver, (std::string, gameName) (bool, ratedGame) (std::vector<std::string>, winners) (std::vector<std::string>, losers) (std::vector<std::string>, draws))
-namespace matchmaking_game
-{
-struct StartGame
-{
-  std::vector<std::string> players{};
-  std::unique_ptr<user_matchmaking_game::GameOptionBase> gameOption{};
-  bool ratedGame{};
-};
+BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), StartGame, (std::vector<std::string>, players) (user_matchmaking_game::GameOptionAsString, gameOptionAsString) (bool, ratedGame))
 
-}
-BOOST_FUSION_ADAPT_STRUCT (matchmaking_game::StartGame, players, gameOption, ratedGame)
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), StartGameError, (std::string, error))
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), StartGameSuccess, (std::string, gameName))
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), GameOverSuccess, )
