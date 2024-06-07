@@ -31,12 +31,15 @@
 #include <memory>
 namespace user_matchmaking_game
 {
+struct DerivedTypeNotSet
+{
+};
 class GameOptionBase
 {
 public:
   virtual ~GameOptionBase () noexcept = default;
 };
-template <typename DerivedType> struct GameOptionWrapper
+template <typename DerivedType = DerivedTypeNotSet> struct GameOptionWrapper
 {
   using derived_type = DerivedType;
   std::unique_ptr<user_matchmaking_game::GameOptionBase> gameOption{};
