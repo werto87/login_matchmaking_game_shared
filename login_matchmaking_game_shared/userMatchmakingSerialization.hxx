@@ -72,5 +72,5 @@ BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), UnhandledEventError, (std::strin
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), GetMatchmakingLogic, )
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), MatchmakingLogic, (std::string, logic))
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), GetUserStatistics, )
-BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), UserStatistics, (size_t, userInCreateCustomGameLobby) (size_t, userInUnRankedQueue) (size_t, userInRankedQueue) (size_t, userInUnRankedGame) (size_t, userInRankedGame))
+BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), UserStatistics, (size_t, userInCreateCustomGameLobby) (size_t, userInUnRankedQueue) (size_t, userInRankedQueue) (size_t, userInGame))
 #endif /* C02CDB99_AA83_45B0_83E7_8C8BC254A8A2 */
