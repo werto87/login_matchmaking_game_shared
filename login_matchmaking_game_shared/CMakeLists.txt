@@ -11,12 +11,11 @@ add_library(login_matchmaking_game_shared INTERFACE)
 add_library(myproject::login_matchmaking_game_shared ALIAS login_matchmaking_game_shared)
 
 
-find_package(durak)
+
 find_package(Boost)
 
 
 target_link_libraries(login_matchmaking_game_shared INTERFACE
-        durak::durak
         Boost::headers
         )
 
