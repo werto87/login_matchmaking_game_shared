@@ -73,4 +73,7 @@ BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), GetMatchmakingLogic, )
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), MatchmakingLogic, (std::string, logic))
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), GetUserStatistics, )
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), UserStatistics, (size_t, userInCreateCustomGameLobby) (size_t, userInUnRankedQueue) (size_t, userInRankedQueue) (size_t, userInGame))
+BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), GetTopRatedPlayers, (size_t, playerCount))
+BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), RatedPlayer, (std::string, name) (size_t, rating))
+BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), TopRatedPlayers, (std::vector<user_matchmaking::RatedPlayer>, players))
 #endif /* C02CDB99_AA83_45B0_83E7_8C8BC254A8A2 */
