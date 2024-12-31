@@ -80,4 +80,6 @@ BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), SubscribeGetTopRatedPlayers, (ui
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), UnSubscribeGetTopRatedPlayers, )
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), GetLoggedInPlayers, (uint64_t, playerCount))
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), LoggedInPlayers, (std::vector<std::string>, players))
+BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), SubscribeGetLoggedInPlayers, (uint64_t, playerCount))
+BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), UnSubscribeGetLoggedInPlayers, )
 #endif /* C02CDB99_AA83_45B0_83E7_8C8BC254A8A2 */
