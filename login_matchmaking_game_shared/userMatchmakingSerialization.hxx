@@ -79,5 +79,5 @@ BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), TopRatedPlayers, (std::vector<us
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), SubscribeGetTopRatedPlayers, (uint64_t, playerCount))
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), UnSubscribeGetTopRatedPlayers, )
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), GetLoggedInPlayers, (uint64_t, playerCount))
-
+BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), LoggedInPlayers, (std::vector<std::string>, players))
 #endif /* C02CDB99_AA83_45B0_83E7_8C8BC254A8A2 */
