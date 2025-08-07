@@ -25,5 +25,5 @@ BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), UserLeftGameError, (std::string,
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), ConnectToGame, (std::string, accountName) (std::string, gameName))
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), ConnectToGameError, (std::string, error))
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), ConnectToGameSuccess, )
-BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), CustomMessage, (std::string, message))
+BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), CustomMessage, (std::string, messageType) (std::string, message))
 #endif /* F7525A03_A98E_4EEF_964B_E02274116B7D */
