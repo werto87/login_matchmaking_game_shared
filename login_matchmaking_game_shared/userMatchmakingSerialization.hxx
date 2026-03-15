@@ -78,7 +78,7 @@ BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), UserStatistics, (size_t, userInC
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), GetTopRatedPlayers, (size_t, playerCount))
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), GetRatedPlayer, (std::string, name))
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), GetRatedPlayerError, (std::string, error))
-BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), RatedPlayer, (std::string, name) (size_t, rating))
+BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), RatedPlayer, (std::string, name) (size_t, rating) (size_t, rank))
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), TopRatedPlayers, (std::vector<user_matchmaking::RatedPlayer>, players))
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), SubscribeGetTopRatedPlayers, (uint64_t, playerCount))
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), UnSubscribeGetTopRatedPlayers, )
