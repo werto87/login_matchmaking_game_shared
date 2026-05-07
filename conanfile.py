@@ -5,6 +5,7 @@ from conan.tools.cmake import CMake, cmake_layout,CMakeToolchain
 class Project(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     generators =  "CMakeDeps"
+    python_requires = "shared/1.0.0"
 
     def generate(self):
         tc = CMakeToolchain(self)
@@ -16,4 +17,13 @@ class Project(ConanFile):
         self.options["catch2"].with_benchmark = True
 
     def requirements(self):
-        self.requires("boost/1.90.0")
+        sharedConan = self.python_requires["shared"].module.SharedConan
+        all_deps = {**sharedConan.COMMON, **sharedConan.BACKEND}
+        deps_to_use = [
+            "boost"
+        ]
+        for pkg_name in deps_to_use:
+            version, isModernDurak = all_deps[pkg_name]
+            self.requires(
+                    f"{pkg_name}/{version}{'@modern-durak' if isModernDurak else ''}",
+                )

@@ -1,5 +1,4 @@
-#ifndef F7525A03_A98E_4EEF_964B_E02274116B7D
-#define F7525A03_A98E_4EEF_964B_E02274116B7D
+#pragma once
 
 #include "login_matchmaking_game_shared/gameOptionAsString.hxx"
 #include <cstddef>
@@ -9,6 +8,10 @@
 #include <string>
 #include <variant>
 
+#ifdef _MSC_VER
+#pragma warning(push)
+#pragma warning(disable : 4003)
+#endif
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), UnhandledMessageError, (std::string, msg) (std::string, error))
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), LeaveGameServer, (std::string, accountName))
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), LeaveGameSuccess, )
@@ -26,4 +29,8 @@ BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), ConnectToGame, (std::string, acc
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), ConnectToGameError, (std::string, error))
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), ConnectToGameSuccess, )
 BOOST_FUSION_DEFINE_STRUCT ((matchmaking_game), CustomMessage, (std::string, messageType) (std::string, message))
-#endif /* F7525A03_A98E_4EEF_964B_E02274116B7D */
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
+

@@ -1,9 +1,12 @@
-#ifndef C02CDB99_AA83_45B0_83E7_8C8BC254A8A2
-#define C02CDB99_AA83_45B0_83E7_8C8BC254A8A2
+#pragma once
 
 #include "login_matchmaking_game_shared/gameOptionAsString.hxx"
 #include <cstddef>
 
+#ifdef _MSC_VER
+#pragma warning(push)
+#pragma warning(disable : 4003)
+#endif
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), JoinChannel, (std::string, channel))
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), JoinChannelSuccess, (std::string, channel))
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), JoinChannelError, (std::string, channel) (std::string, error))
@@ -12,6 +15,7 @@ BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), CreateAccountCancel, )
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), CreateAccountCancelSuccess, )
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), CreateAccountSuccess, (std::string, accountName))
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), CreateAccountError, (std::string, accountName) (std::string, error))
+BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), LoginAccountSteam, (std::string, ticket))
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), LoginAccount, (std::string, accountName) (std::string, password))
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), LoginAccountCancel, )
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), LoginAccountCancelSuccess, )
@@ -87,4 +91,7 @@ BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), LoggedInPlayers, (std::vector<st
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), SubscribeGetLoggedInPlayers, (uint64_t, playerCount))
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), UnSubscribeGetLoggedInPlayers, )
 BOOST_FUSION_DEFINE_STRUCT ((user_matchmaking), CustomMessage, (std::string, messageType) (std::string, message))
-#endif /* C02CDB99_AA83_45B0_83E7_8C8BC254A8A2 */
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
